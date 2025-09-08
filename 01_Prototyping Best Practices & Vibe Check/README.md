@@ -18,17 +18,18 @@ You will be required to submit a link to your GitHub, as well as screenshots of 
 
 > NOTE: This will require you to make updates to your personal class repository, instructions on that process can be found [here](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)!
 
-#### How AIM Does Assignments
-Throughout our time together - we'll be providing a number of assignments. Each assignment can be split into two broad categories:
+## 🏗️ How AIM Does Assignments
 
-- Base Assignment - a more conceptual and theory based assignment focused on locking in specific key concepts and learnings.
-- Hardmode Assignment - a more programming focused assignment focused on core code-concepts.
+> 📅 **Assignments will always be released to students as live class begins.** We will never release assignments early.
 
 Each assignment will have a few of the following categories of exercises:
 
-- ❓Questions - these will be questions that you will be expected to gather the answer to! These can appear as general questions, or questions meant to spark a discussion in your breakout rooms!
-- 🏗️ Activities - these will be work or coding activities meant to reinforce specific concepts or theory components.
-- 🚧 Advanced Builds - these will only appear in Hardmode assignments, and will require you to build something with little to no help outside of documentation!
+- ❓ **Questions** – these will be questions that you will be expected to gather the answer to! These can appear as general questions, or questions meant to spark a discussion in your breakout rooms!
+
+- 🏗️ **Activities** – these will be work or coding activities meant to reinforce specific concepts or theory components.
+
+- 🚧 **Advanced Builds (optional)** – Take on a challenge! These builds require you to create something with minimal guidance outside of the documentation. Completing an Advanced Build earns full credit in place of doing the base assignment notebook questions/activities.
+
 
 ##### 🏗️ Activity #1:
 
