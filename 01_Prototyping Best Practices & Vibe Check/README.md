@@ -82,6 +82,6 @@ When submitting your homework provide the following on the form:
 
 In essence, it's a first look to ensure your system isn't experiencing catastrophic failure.
 
-##### 🧑‍🤝‍🧑❓ Discussion Question #1:
+#####❓Question #1:
 
 What are some limitations of vibe checking as an evaluation tool?
