@@ -12,7 +12,7 @@
 
 ### Assignment
 
-In the following assignment, you are required to take the app that you created for the AIE7 challenge (from [this repository](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge)) and conduct what is known, colloquially, as a "vibe check" on the application. 
+In the following assignment, you are required to take the app that you created for the AIE8 challenge (from [this repository](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge)) and conduct what is known, colloquially, as a "vibe check" on the application. 
 
 You will be required to submit a link to your GitHub, as well as screenshots of the completed "vibe checks" through the provided Google Form!
 
@@ -57,7 +57,7 @@ Please make adjustments to your application that you believe will improve the vi
 ### Submitting Your Homework
 #### Activity #1 and Discussion Question #1 Only
 Follow these steps to prepare and submit your homework:
-1. Create a branch of your `AIE7` repo to track your changes. Example command: `git checkout -b s01-assignment`
+1. Create a branch of your `AIE8` repo to track your changes. Example command: `git checkout -b s01-assignment`
 2. Create a markdown document (for example “ACTIVITIES.md”).
 3. Copy the questions into the document.
 4. For each question:
