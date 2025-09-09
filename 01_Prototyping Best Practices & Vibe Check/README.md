@@ -26,7 +26,7 @@ Each assignment will have a few of the following categories of exercises:
 
 In the following assignment, you are required to take the app that you created for the AIE8 challenge (from [this repository](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge)) and conduct what is known, colloquially, as a "vibe check" on the application. 
 
-You will be required to submit a link to your GitHub with completed activities through [homework.aimakerspace.io](https://homework.aimakerspace.io)
+You will be required to submit a link to your GitHub, as well as screenshots of the completed "vibe checks" through the provided Google Form!
 
 > NOTE: This will require you to make updates to your personal class repository, instructions on that process can be found [here](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)!
 
