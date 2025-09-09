@@ -10,14 +10,6 @@
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
 
-### Assignment
-
-In the following assignment, you are required to take the app that you created for the AIE8 challenge (from [this repository](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge)) and conduct what is known, colloquially, as a "vibe check" on the application. 
-
-You will be required to submit a link to your GitHub, as well as screenshots of the completed "vibe checks" through the provided Google Form!
-
-> NOTE: This will require you to make updates to your personal class repository, instructions on that process can be found [here](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)!
-
 ## 🏗️ How AIM Does Assignments
 
 > 📅 **Assignments will always be released to students as live class begins.** We will never release assignments early.
@@ -30,8 +22,16 @@ Each assignment will have a few of the following categories of exercises:
 
 - 🚧 **Advanced Builds (optional)** – Take on a challenge! These builds require you to create something with minimal guidance outside of the documentation. Completing an Advanced Build earns full credit in place of doing the base assignment notebook questions/activities.
 
+### Main Assignment
 
-##### 🏗️ Activity #1:
+In the following assignment, you are required to take the app that you created for the AIE8 challenge (from [this repository](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge)) and conduct what is known, colloquially, as a "vibe check" on the application. 
+
+You will be required to submit a link to your GitHub, as well as screenshots of the completed "vibe checks" through the provided Google Form!
+
+> NOTE: This will require you to make updates to your personal class repository, instructions on that process can be found [here](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)!
+
+
+#### 🏗️ Activity #1:
 
 Please evaluate your system on the following questions:
 
@@ -48,40 +48,65 @@ Please evaluate your system on the following questions:
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
 
-##### 🚧 Advanced Build:
+#### A Note on Vibe Checking
 
-Please make adjustments to your application that you believe will improve the vibe check done above, then deploy the changes to your Vercel domain [(see these instructions from your Challenge project)](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge/blob/main/README.md) and redo the above vibe check.
+>"Vibe checking" is an informal term for cursory unstructured and non-comprehensive evaluation of LLM-powered systems. The idea is to loosely evaluate our system to cover significant and crucial functions where failure would be immediately noticeable and severe.
+>
+>In essence, it's a first look to ensure your system isn't experiencing catastrophic failure.
+
+#### ❓Question #1:
+
+What are some limitations of vibe checking as an evaluation tool?
+##### ✅ Answer:
+
+### 🚧 Advanced Build (OPTIONAL):
+
+Please make adjustments to your application that you believe will improve the vibe check you completed above, then deploy the changes to your Vercel domain [(see these instructions from your Challenge project)](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge/blob/main/README.md) and redo the above vibe check.
 
 > NOTE: You may reach for improving the model, changing the prompt, or any other method.
 
-### Submitting Your Homework
-#### Activity #1 and Discussion Question #1 Only
+#### 🏗️ Activity #1
+##### Adjustments Made:
+- _describe adjustment(s) here_
+
+##### Results:
+1. _Comment here how the change(s) impacted the vibe check of your system_
+2. 
+3. 
+4. 
+5.
+
+
+## Submitting Your Homework
+### Main Assignment (Activity #1 only)
 Follow these steps to prepare and submit your homework:
-1. Create a branch of your `AIE8` repo to track your changes. Example command: `git checkout -b s01-assignment`
-2. Create a markdown document (for example “ACTIVITIES.md”).
-3. Copy the questions into the document.
-4. For each question:
-    + Answer the “Aspect Tested” question
-    + Write up your evaluation of your system’s performance 
-5. Answer “Discussion Question #1” at the end of this document.
-6. Add, commit and push your new document to your origin repository.
->(NOTE: You should not, merge the new document into origin’s main branch. This will spare you from update challenges for each session.)
+1. Pull the latest updates from upstream into the main branch of your AIE8 repo:
+    - For your initial repo setup see [00_Setting Up Git/README.md](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)
+    - To get the latest updates from AI Makerspace into your own AIE8 repo, run the following commands:
+    ```
+    git checkout main
+    git pull upstream main
+    git push origin main
+    ```
+2. **IMPORTANT:** Start Cursor from the `01_Prototyping Best Practices & Vibe Check` folder (you can also use the _File -> Open Folder_ menu option of an existing Cursor window)
+3. Create a branch of your `AIE8` repo to track your changes. Example command: `git checkout -b s01-assignment`
+4. Edit this `README.md` file (the one in your `AIE8/01_Prototyping Best Practices & Vibe Check` folder)
+5. Perform a "Vibe check" evaluation your AI-Engineering-Challenge system using the five questions provided above 
+6. For each Activity question:
+    - Define the “Aspect Tested”
+    - Comment on how your system performed on it. 
+7. Provide an answer to `❓Question #1:` after the `✅ Answer:` prompt
+8. Add, commit and push your modified `README.md` to your origin repository.
 
-When submitting your homework, provide the GitHub link to the new document on the tracking branch you created.
+>(NOTE: You should not merge the new document into origin's main branch. This will spare you from update challenges for each future session.)
 
-#### Activities, Discussion Questions _AND_ The Advanced Build:
-For Activity #1 and Discussion Question #1, follow the same steps as above _**using your Challenge project's repo.**_
+When submitting your homework, provide the GitHub URL to the tracking branch (for example: `s01-assignment`) you created on your AIE8 repo.
 
-When submitting your homework provide the following on the form:
-+ The GitHub URL to the markdown document you created in your Challenge project's repo.
-+ The public Vercel URL to your updated Challenge project.
+### The Advanced Build:
+1. Follow all of the steps (Steps 1 - 8) of the Main Assignment above
+2. Document what you changed and the results you saw in the `Adjustments Made:` and `Results:` sections of the Advanced Build's Assignment #1
+3. Add, commit and push your additional modifications to this `README.md` file to your origin repository.
 
-### A Note on Vibe Checking
-
-"Vibe checking" is an informal term for cursory unstructured and non-comprehensive evaluation of LLM-powered systems. The idea is to loosely evaluate our system to cover significant and crucial functions where failure would be immediately noticeable and severe.
-
-In essence, it's a first look to ensure your system isn't experiencing catastrophic failure.
-
-#####❓Question #1:
-
-What are some limitations of vibe checking as an evaluation tool?
+When submitting your homework, provide the following on the form:
++ The GitHub URL to the tracking branch (for example: `s01-assignment`) you created on your AIE8 repo.
++ The public Vercel URL to your updated Challenge project on your AIE8 repo.
