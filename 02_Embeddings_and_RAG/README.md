@@ -34,12 +34,15 @@ Run the notebook!
 
 # Ship 🚢
 
-- Add one of the following "extras" to the RAG pipeline:
+- Add one of the following "extras" (or whatever augmentations suit your use-case) to the RAG pipeline:
      - Allow it to work with PDF files
      - Implement a new distance metric
      - Add metadata support to the vector database
-- Make a simple diagram of the RAG process
+     - Use a different embedding model
+     - Add the capability to ingest a YouTube link
+- Make a simple diagram of your RAG process
 - Run the notebook
+- When you're finished with augmentations to your RAG application - vibe check it against the old one - see if you can "feel the improvement!
 - Record a Loom walking through the notebook, the questions in the notebook, and your addition!
 
 # Share 🚀
