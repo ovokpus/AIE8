@@ -38,7 +38,6 @@ flowchart TD
     R -.-> I
     R -.-> Q
     
-    %% Styling for black text
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef dataNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
     classDef processNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000000
@@ -107,12 +106,12 @@ def cosine_similarity(vector_a: np.array, vector_b: np.array) -> float:
 
 ```mermaid
 flowchart TD
-    A[Vector A: 1,536 floats] --> D[Dot Product<br/>Σ(ai × bi)]
+    A[Vector A: 1,536 floats] --> D[Dot Product<br/>Sum of ai * bi]
     B[Vector B: 1,536 floats] --> D
-    A --> E[Norm A<br/>√(Σ(ai²))]
-    B --> F[Norm B<br/>√(Σ(bi²))]
+    A --> E[Norm A<br/>Sqrt of sum ai squared]
+    B --> F[Norm B<br/>Sqrt of sum bi squared]
     
-    D --> G[Cosine Similarity<br/>dot_product / (norm_a × norm_b)]
+    D --> G[Cosine Similarity<br/>dot_product / norm_a * norm_b]
     E --> G
     F --> G
     
@@ -191,13 +190,13 @@ flowchart TD
 
 ```mermaid
 graph TD
-    A[Search Complexity Analysis] --> B[Similarity Calculation<br/>O(d × n)]
-    A --> C[Sorting<br/>O(n log n)]
-    A --> D[Total Complexity<br/>O(d × n + n log n)]
+    A[Search Complexity Analysis] --> B[Similarity Calculation<br/>O d * n]
+    A --> C[Sorting<br/>O n log n]
+    A --> D[Total Complexity<br/>O d * n + n log n]
     
-    B --> E[d=1,536 dimensions<br/>n=373 chunks<br/>≈573,000 operations]
-    C --> F[373 log 373<br/>≈3,200 comparisons]
-    D --> G[Dominated by O(d × n)<br/>≈O(n) practical]
+    B --> E[d=1,536 dimensions<br/>n=373 chunks<br/>approx 573,000 operations]
+    C --> F[373 log 373<br/>approx 3,200 comparisons]
+    D --> G[Dominated by O d * n<br/>approx O n practical]
     
     H[Performance Reality] --> I[No Optimization<br/>Brute force search]
     H --> J[Production Alternative<br/>ANN: FAISS, Annoy]
@@ -452,8 +451,8 @@ flowchart TD
     C --> D[✂️ CharacterTextSplitter<br/>chunk_size=1000, overlap=200]
     D --> E[📑 373 Text Chunks<br/>Manageable pieces]
     E --> F[🤖 EmbeddingModel<br/>OpenAI API calls]
-    F --> G[🔢 373 × 1,536 Float Vectors<br/>~2.3MB embeddings]
-    G --> H[🗄️ VectorDatabase<br/>Dictionary: text_chunk → np_array]
+    F --> G[🔢 373 x 1,536 Float Vectors<br/>~2.3MB embeddings]
+    G --> H[🗄️ VectorDatabase<br/>Dictionary: text_chunk to np_array]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef dataNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -507,7 +506,6 @@ flowchart TD
 ### Memory and Computational Footprint
 
 ```mermaid
-%%{init: {"pie": {"textPosition": 0.5}, "themeVariables": {"pieTextColor": "#000000"}}}%%
 pie title Storage Requirements (2.7MB Total)
     "Embeddings (2.3MB)" : 85
     "Original Text (300KB)" : 11
@@ -515,18 +513,20 @@ pie title Storage Requirements (2.7MB Total)
 ```
 
 ```mermaid
-gantt
-    title Query Processing Timeline
-    dateFormat YYYY-MM-DD
-    axisFormat %L ms
+flowchart LR
+    A[Query Start] --> B[Embedding API Call<br/>~500ms]
+    B --> C[Similarity Computation<br/>~5ms]
+    C --> D[Context Assembly<br/>~5ms]
+    D --> E[LLM API Call<br/>~3000ms]
+    E --> F[Response Ready]
     
-    section API Calls
-    Embedding API Call : task1, 2024-01-01, 500ms
-    LLM API Call : task2, after task1, 3000ms
+    classDef apiCall fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000
+    classDef localProcess fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef endpoint fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
     
-    section Local Processing  
-    Similarity Computation : task3, after task1, 5ms
-    Context Assembly : task4, after task3, 5ms
+    class B,E apiCall
+    class C,D localProcess
+    class A,F endpoint
 ```
 
 ```mermaid
@@ -654,7 +654,7 @@ graph TB
         A[PMarcaBlogs.txt<br/>300KB raw text]
         B[373 Text Chunks<br/>1KB each]
         C[Vector Database<br/>Dictionary storage]
-        D[Embeddings<br/>373 × 1,536 floats]
+        D[Embeddings<br/>373 x 1,536 floats]
     end
     
     subgraph "Processing Layer"
