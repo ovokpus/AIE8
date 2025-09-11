@@ -6,7 +6,7 @@ load_dotenv()
 
 
 class ChatOpenAI:
-    def __init__(self, model_name: str = "gpt-4o-mini"):
+    def __init__(self, model_name: str = "gpt-4.1-mini"):
         self.model_name = model_name
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         if self.openai_api_key is None:

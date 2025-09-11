@@ -7,7 +7,7 @@ import asyncio
 
 
 class EmbeddingModel:
-    def __init__(self, embeddings_model_name: str = "text-embedding-3-small"):
+    def __init__(self, embeddings_model_name: str = "text-embedding-3-small", batch_size: int = 1024):
         load_dotenv()
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         self.async_client = AsyncOpenAI()
@@ -17,12 +17,11 @@ class EmbeddingModel:
             raise ValueError(
                 "OPENAI_API_KEY environment variable is not set. Please set it to your OpenAI API key."
             )
-        openai.api_key = self.openai_api_key
         self.embeddings_model_name = embeddings_model_name
+        self.batch_size = batch_size
 
     async def async_get_embeddings(self, list_of_text: List[str]) -> List[List[float]]:
-        batch_size = 1024
-        batches = [list_of_text[i:i + batch_size] for i in range(0, len(list_of_text), batch_size)]
+        batches = [list_of_text[i:i + self.batch_size] for i in range(0, len(list_of_text), self.batch_size)]
         
         async def process_batch(batch):
             embedding_response = await self.async_client.embeddings.create(
