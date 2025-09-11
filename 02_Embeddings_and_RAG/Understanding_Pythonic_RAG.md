@@ -8,33 +8,28 @@ This document dives deep into the **mathematical foundations**, **algorithmic me
 
 ```mermaid
 flowchart TD
-    %% Data Preparation Phase
-    A[📄 Source Documents<br/>PMarcaBlogs.txt] --> B[🔄 TextFileLoader<br/>Load text files]
-    B --> C[📊 Single Document<br/>In memory]
-    C --> D[✂️ CharacterTextSplitter<br/>chunk_size=1000<br/>chunk_overlap=200]
-    D --> E[📑 Split Documents<br/>373 chunks]
+    A["Source Documents PMarcaBlogs.txt"] --> B["TextFileLoader Load text files"]
+    B --> C["Single Document In memory"]
+    C --> D["CharacterTextSplitter chunk_size=1000 chunk_overlap=200"]
+    D --> E["Split Documents 373 chunks"]
     
-    %% Embedding Phase
-    E --> F[🤖 EmbeddingModel<br/>text-embedding-3-small<br/>dimension=1536]
-    F --> G[⚡ async_get_embeddings<br/>Batch processing]
-    G --> H[🗄️ VectorDatabase<br/>Store text + embeddings]
+    E --> F["EmbeddingModel text-embedding-3-small dimension=1536"]
+    F --> G["async_get_embeddings Batch processing"]
+    G --> H["VectorDatabase Store text + embeddings"]
     
-    %% Query Processing Phase
-    I[❓ User Query<br/>What is the Michael Eisner<br/>Memorial Weak Executive Problem?] --> J[🔍 Query Embedding<br/>Same embedding model]
-    J --> K[📏 Cosine Similarity<br/>Compare query vs all vectors]
-    K --> L[🎯 Top K Results<br/>k=3 most similar chunks]
+    I["User Query What is the Michael Eisner Memorial Weak Executive Problem?"] --> J["Query Embedding Same embedding model"]
+    J --> K["Cosine Similarity Compare query vs all vectors"]
+    K --> L["Top K Results k=3 most similar chunks"]
     
-    %% RAG Pipeline Phase
-    L --> M[📝 Context Assembly<br/>Format retrieved chunks]
-    M --> N[🎭 System Prompt<br/>RAG_SYSTEM_TEMPLATE<br/>Instructions for LLM]
-    M --> O[👤 User Prompt<br/>RAG_USER_TEMPLATE<br/>Context + Query]
+    L --> M["Context Assembly Format retrieved chunks"]
+    M --> N["System Prompt RAG_SYSTEM_TEMPLATE Instructions for LLM"]
+    M --> O["User Prompt RAG_USER_TEMPLATE Context + Query"]
     
-    N --> P[🧠 ChatOpenAI<br/>gpt-4o-mini]
+    N --> P["ChatOpenAI gpt-4o-mini"]
     O --> P
-    P --> Q[💬 Final Response<br/>Context-aware answer]
+    P --> Q["Final Response Context-aware answer"]
     
-    %% Pipeline Class
-    R[🏗️ RetrievalAugmentedQAPipeline<br/>Orchestrates entire process] -.-> H
+    R["RetrievalAugmentedQAPipeline Orchestrates entire process"] -.-> H
     R -.-> I
     R -.-> Q
     
@@ -106,19 +101,19 @@ def cosine_similarity(vector_a: np.array, vector_b: np.array) -> float:
 
 ```mermaid
 flowchart TD
-    A[Vector A: 1,536 floats] --> D[Dot Product<br/>Sum of ai * bi]
-    B[Vector B: 1,536 floats] --> D
-    A --> E[Norm A<br/>Sqrt of sum ai squared]
-    B --> F[Norm B<br/>Sqrt of sum bi squared]
+    A["Vector A 1536 floats"] --> D["Dot Product Sum of ai times bi"]
+    B["Vector B 1536 floats"] --> D
+    A --> E["Norm A Sqrt of sum ai squared"]
+    B --> F["Norm B Sqrt of sum bi squared"]
     
-    D --> G[Cosine Similarity<br/>dot_product / norm_a * norm_b]
+    D --> G["Cosine Similarity dot_product divided by norm_a times norm_b"]
     E --> G
     F --> G
     
-    G --> H{Similarity Score}
-    H --> I[1.0: Identical vectors]
-    H --> J[0.0: Orthogonal vectors]
-    H --> K[-1.0: Opposite vectors]
+    G --> H{"Similarity Score"}
+    H --> I["1.0 Identical vectors"]
+    H --> J["0.0 Orthogonal vectors"]
+    H --> K["-1.0 Opposite vectors"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef vector fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -132,13 +127,13 @@ flowchart TD
 
 ```mermaid
 graph LR
-    A[Why Cosine Similarity?] --> B[Magnitude Independent<br/>Only direction matters]
-    A --> C[Semantic Meaning<br/>Similar concepts cluster]
-    A --> D[Computational Efficiency<br/>Single dot product + norms]
+    A["Why Cosine Similarity"] --> B["Magnitude Independent Only direction matters"]
+    A --> C["Semantic Meaning Similar concepts cluster"]
+    A --> D["Computational Efficiency Single dot product plus norms"]
     
-    B --> E[Text length doesn't affect similarity]
-    C --> F[Geometric representation of meaning]
-    D --> G[Fast O(d) computation]
+    B --> E["Text length does not affect similarity"]
+    C --> F["Geometric representation of meaning"]
+    D --> G["Fast O d computation"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef reason fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000000
@@ -163,20 +158,20 @@ def search(self, query_vector: np.array, k: int,
 
 ```mermaid
 flowchart TD
-    A[Query Vector<br/>1,536 dimensions] --> B[Iterate Through All Vectors<br/>O(n) where n=373]
+    A["Query Vector 1536 dimensions"] --> B["Iterate Through All Vectors O n where n=373"]
     
-    B --> C[Vector 1<br/>Cosine Similarity]
-    B --> D[Vector 2<br/>Cosine Similarity]
-    B --> E[Vector 3<br/>Cosine Similarity]
-    B --> F[... 370 more vectors]
+    B --> C["Vector 1 Cosine Similarity"]
+    B --> D["Vector 2 Cosine Similarity"]
+    B --> E["Vector 3 Cosine Similarity"]
+    B --> F["370 more vectors"]
     
-    C --> G[Scores List<br/>[(text, score), ...]]
+    C --> G["Scores List text score pairs"]
     D --> G
     E --> G
     F --> G
     
-    G --> H[Sort by Score<br/>O(n log n)]
-    H --> I[Top-K Selection<br/>Return k=3 highest]
+    G --> H["Sort by Score O n log n"]
+    H --> I["Top-K Selection Return k=3 highest"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef query fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -190,16 +185,16 @@ flowchart TD
 
 ```mermaid
 graph TD
-    A[Search Complexity Analysis] --> B[Similarity Calculation<br/>O d * n]
-    A --> C[Sorting<br/>O n log n]
-    A --> D[Total Complexity<br/>O d * n + n log n]
+    A["Search Complexity Analysis"] --> B["Similarity Calculation O d times n"]
+    A --> C["Sorting O n log n"]
+    A --> D["Total Complexity O d times n plus n log n"]
     
-    B --> E[d=1,536 dimensions<br/>n=373 chunks<br/>approx 573,000 operations]
-    C --> F[373 log 373<br/>approx 3,200 comparisons]
-    D --> G[Dominated by O d * n<br/>approx O n practical]
+    B --> E["d=1536 dimensions n=373 chunks approx 573000 operations"]
+    C --> F["373 log 373 approx 3200 comparisons"]
+    D --> G["Dominated by O d times n approx O n practical"]
     
-    H[Performance Reality] --> I[No Optimization<br/>Brute force search]
-    H --> J[Production Alternative<br/>ANN: FAISS, Annoy]
+    H["Performance Reality"] --> I["No Optimization Brute force search"]
+    H --> J["Production Alternative ANN FAISS Annoy"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef complexity fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000
@@ -235,17 +230,17 @@ class BasePrompt:
 
 ```mermaid
 flowchart TD
-    A[Template String<br/>You are {role}, answer {style}] --> B[Regex Pattern<br/>r'\{([^}]+)\}']
-    B --> C[Variable Extraction<br/>['role', 'style']]
+    A["Template String You are role answer style"] --> B["Regex Pattern find variables"]
+    B --> C["Variable Extraction role style"]
     
-    D[Default Values<br/>{'style': 'concise'}] --> E[Value Merging]
-    F[Provided kwargs<br/>{'role': 'expert'}] --> E
+    D["Default Values style concise"] --> E["Value Merging"]
+    F["Provided kwargs role expert"] --> E
     C --> E
     
-    E --> G[Format Dictionary<br/>{'role': 'expert', 'style': 'concise'}]
-    G --> H[String Substitution<br/>Python .format()]
+    E --> G["Format Dictionary role expert style concise"]
+    G --> H["String Substitution Python format"]
     A --> H
-    H --> I[Formatted Prompt<br/>You are expert, answer concise]
+    H --> I["Formatted Prompt You are expert answer concise"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef input fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -267,21 +262,21 @@ class RolePrompt(BasePrompt):
 
 ```mermaid
 graph TD
-    A[RolePrompt Classes] --> B[SystemRolePrompt<br/>role='system']
-    A --> C[UserRolePrompt<br/>role='user']
-    A --> D[AssistantRolePrompt<br/>role='assistant']
+    A["RolePrompt Classes"] --> B["SystemRolePrompt role system"]
+    A --> C["UserRolePrompt role user"]
+    A --> D["AssistantRolePrompt role assistant"]
     
-    B --> E[System Message<br/>Sets behavior & instructions]
-    C --> F[User Message<br/>Contains queries & context]
-    D --> G[Assistant Message<br/>Example responses]
+    B --> E["System Message Sets behavior and instructions"]
+    C --> F["User Message Contains queries and context"]
+    D --> G["Assistant Message Example responses"]
     
-    E --> H[OpenAI Message Format]
+    E --> H["OpenAI Message Format"]
     F --> H
     G --> H
     
-    H --> I[{'role': 'system', 'content': '...'}]
-    H --> J[{'role': 'user', 'content': '...'}]
-    H --> K[{'role': 'assistant', 'content': '...'}]
+    H --> I["role system content text"]
+    H --> J["role user content text"]
+    H --> K["role assistant content text"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef roleClass fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -318,26 +313,26 @@ Please provide your answer based solely on the context above."""
 
 ```mermaid
 flowchart TD
-    A[RAG Template Variables] --> B[{context}<br/>Retrieved document chunks]
-    A --> C[{context_count}<br/>Number of chunks]
-    A --> D[{similarity_scores}<br/>Relevance scores]
-    A --> E[{user_query}<br/>Original question]
-    A --> F[{response_style}<br/>Behavior modifier]
-    A --> G[{response_length}<br/>Length modifier]
+    A["RAG Template Variables"] --> B["context Retrieved document chunks"]
+    A --> C["context_count Number of chunks"]
+    A --> D["similarity_scores Relevance scores"]
+    A --> E["user_query Original question"]
+    A --> F["response_style Behavior modifier"]
+    A --> G["response_length Length modifier"]
     
-    B --> H[System Template<br/>Instructions & constraints]
-    C --> I[User Template<br/>Context + Query]
+    B --> H["System Template Instructions and constraints"]
+    C --> I["User Template Context plus Query"]
     D --> I
     E --> I
     F --> H
     G --> H
     
-    H --> J[System Message<br/>How to behave]
-    I --> K[User Message<br/>What to answer]
+    H --> J["System Message How to behave"]
+    I --> K["User Message What to answer"]
     
-    J --> L[ChatOpenAI Pipeline]
+    J --> L["ChatOpenAI Pipeline"]
     K --> L
-    L --> M[Context-Aware Response]
+    L --> M["Context-Aware Response"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef variable fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -407,22 +402,22 @@ for i, (context, score) in enumerate(context_list, 1):
 
 ```mermaid
 flowchart TD
-    A[Retrieved Chunks<br/>[(text1, 0.85), (text2, 0.72), (text3, 0.68)]] --> B[Context Assembly Loop]
+    A["Retrieved Chunks text1 0.85 text2 0.72 text3 0.68"] --> B["Context Assembly Loop"]
     
-    B --> C[Chunk 1: score 0.85<br/>Label as [Source 1]]
-    B --> D[Chunk 2: score 0.72<br/>Label as [Source 2]]
-    B --> E[Chunk 3: score 0.68<br/>Label as [Source 3]]
+    B --> C["Chunk 1 score 0.85 Label as Source 1"]
+    B --> D["Chunk 2 score 0.72 Label as Source 2"]
+    B --> E["Chunk 3 score 0.68 Label as Source 3"]
     
-    C --> F[Formatted Context String]
+    C --> F["Formatted Context String"]
     D --> F
     E --> F
     
-    F --> G[Final Context<br/>[Source 1]: text1\n\n[Source 2]: text2\n\n[Source 3]: text3]
+    F --> G["Final Context Source 1 text1 Source 2 text2 Source 3 text3"]
     
-    H[Context Properties] --> I[Source Labeling<br/>Each chunk gets [Source N]]
-    H --> J[Double Newlines<br/>Clean separation]
-    H --> K[Text Preservation<br/>Original content unchanged]
-    H --> L[Optional Metadata<br/>Similarity scores included]
+    H["Context Properties"] --> I["Source Labeling Each chunk gets Source N"]
+    H --> J["Double Newlines Clean separation"]
+    H --> K["Text Preservation Original content unchanged"]
+    H --> L["Optional Metadata Similarity scores included"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef input fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -446,13 +441,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[📄 Raw Text<br/>PMarcaBlogs.txt] --> B[🔄 TextFileLoader<br/>File Reading]
-    B --> C[📝 Single Document String<br/>~300KB text]
-    C --> D[✂️ CharacterTextSplitter<br/>chunk_size=1000, overlap=200]
-    D --> E[📑 373 Text Chunks<br/>Manageable pieces]
-    E --> F[🤖 EmbeddingModel<br/>OpenAI API calls]
-    F --> G[🔢 373 x 1,536 Float Vectors<br/>~2.3MB embeddings]
-    G --> H[🗄️ VectorDatabase<br/>Dictionary: text_chunk to np_array]
+    A["Raw Text PMarcaBlogs.txt"] --> B["TextFileLoader File Reading"]
+    B --> C["Single Document String 300KB text"]
+    C --> D["CharacterTextSplitter chunk_size=1000 overlap=200"]
+    D --> E["373 Text Chunks Manageable pieces"]
+    E --> F["EmbeddingModel OpenAI API calls"]
+    F --> G["373 x 1536 Float Vectors 2.3MB embeddings"]
+    G --> H["VectorDatabase Dictionary text_chunk to np_array"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef dataNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -466,12 +461,12 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[❓ User Query String<br/>Natural language question] --> B[🤖 EmbeddingModel<br/>Same model as corpus]
-    B --> C[🔢 1,536 Float Query Vector<br/>High-dimensional representation]
-    C --> D[📏 Cosine Similarity<br/>373 comparisons]
-    D --> E[📊 Scored List<br/>[chunk, score] pairs]
-    E --> F[🎯 Top-K Selection<br/>3 most similar chunks]
-    F --> G[📝 Context Assembly<br/>Formatted context string]
+    A["User Query String Natural language question"] --> B["EmbeddingModel Same model as corpus"]
+    B --> C["1536 Float Query Vector High-dimensional representation"]
+    C --> D["Cosine Similarity 373 comparisons"]
+    D --> E["Scored List chunk score pairs"]
+    E --> F["Top-K Selection 3 most similar chunks"]
+    F --> G["Context Assembly Formatted context string"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef dataNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -485,13 +480,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[📝 Formatted Context<br/>Retrieved chunks] --> C[🎭 RAG Prompt Templates<br/>System + User messages]
-    B[❓ User Query<br/>Original question] --> C
-    C --> D[💬 System Message<br/>Instructions for LLM]
-    C --> E[👤 User Message<br/>Context + Query]
-    D --> F[🧠 ChatOpenAI<br/>GPT-4o-mini]
+    A["Formatted Context Retrieved chunks"] --> C["RAG Prompt Templates System plus User messages"]
+    B["User Query Original question"] --> C
+    C --> D["System Message Instructions for LLM"]
+    C --> E["User Message Context plus Query"]
+    D --> F["ChatOpenAI GPT-4o-mini"]
     E --> F
-    F --> G[💬 Generated Response<br/>Context-aware answer]
+    F --> G["Generated Response Context-aware answer"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef dataNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
@@ -514,11 +509,11 @@ pie title Storage Requirements (2.7MB Total)
 
 ```mermaid
 flowchart LR
-    A[Query Start] --> B[Embedding API Call<br/>~500ms]
-    B --> C[Similarity Computation<br/>~5ms]
-    C --> D[Context Assembly<br/>~5ms]
-    D --> E[LLM API Call<br/>~3000ms]
-    E --> F[Response Ready]
+    A["Query Start"] --> B["Embedding API Call 500ms"]
+    B --> C["Similarity Computation 5ms"]
+    C --> D["Context Assembly 5ms"]
+    D --> E["LLM API Call 3000ms"]
+    E --> F["Response Ready"]
     
     classDef apiCall fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000
     classDef localProcess fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000000
@@ -531,13 +526,13 @@ flowchart LR
 
 ```mermaid
 graph TD
-    A[Scalability Constraints] --> B[Linear Search O(n)]
-    A --> C[Memory Growth 6KB/chunk]
-    A --> D[API Costs $0.00002/1K tokens]
+    A["Scalability Constraints"] --> B["Linear Search O n"]
+    A --> C["Memory Growth 6KB per chunk"]
+    A --> D["API Costs 0.00002 per 1K tokens"]
     
-    B --> E[Max ~10K chunks before slowdown]
-    C --> F[RAM usage scales linearly]
-    D --> G[Cost increases with corpus size]
+    B --> E["Max 10K chunks before slowdown"]
+    C --> F["RAM usage scales linearly"]
+    D --> G["Cost increases with corpus size"]
     
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
     classDef constraint fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000
@@ -651,29 +646,29 @@ This Pythonic RAG implementation prioritizes **understanding over optimization**
 ```mermaid
 graph TB
     subgraph "Data Layer"
-        A[PMarcaBlogs.txt<br/>300KB raw text]
-        B[373 Text Chunks<br/>1KB each]
-        C[Vector Database<br/>Dictionary storage]
-        D[Embeddings<br/>373 x 1,536 floats]
+        A["PMarcaBlogs.txt 300KB raw text"]
+        B["373 Text Chunks 1KB each"]
+        C["Vector Database Dictionary storage"]
+        D["Embeddings 373 x 1536 floats"]
     end
     
     subgraph "Processing Layer"
-        E[TextFileLoader<br/>File I/O]
-        F[CharacterTextSplitter<br/>Chunking logic]
-        G[EmbeddingModel<br/>OpenAI API wrapper]
-        H[Cosine Similarity<br/>Math operations]
+        E["TextFileLoader File I/O"]
+        F["CharacterTextSplitter Chunking logic"]
+        G["EmbeddingModel OpenAI API wrapper"]
+        H["Cosine Similarity Math operations"]
     end
     
     subgraph "Application Layer"
-        I[VectorDatabase<br/>Search & storage]
-        J[Prompt Templates<br/>System & User]
-        K[ChatOpenAI<br/>LLM interface]
-        L[RAG Pipeline<br/>Orchestration]
+        I["VectorDatabase Search and storage"]
+        J["Prompt Templates System and User"]
+        K["ChatOpenAI LLM interface"]
+        L["RAG Pipeline Orchestration"]
     end
     
     subgraph "External Services"
-        M[OpenAI Embeddings API<br/>text-embedding-3-small]
-        N[OpenAI Chat API<br/>gpt-4o-mini]
+        M["OpenAI Embeddings API text-embedding-3-small"]
+        N["OpenAI Chat API gpt-4o-mini"]
     end
     
     A --> E
