@@ -71,28 +71,25 @@ Looking forward to more AI-driven adventures! 🌟 Feel free to connect if you'd
 ```
 
 # Submitting Your Homework
+## Main Assignment
 Follow these steps to prepare and submit your homework:
-1. Create a branch of your `AIE7` repo to track your changes. Example command: `git checkout -b s02-assignment`
-2. Answering the questions in the `02_Embeddings_and_RAG/Pythonic_RAG_Assignment.ipynb`notebook:
-    + Option 1: Provide your answers in a separate markdown document:
-      + Create a markdown document in the `02_Embeddings_and_RAG` folder of your assignment branch (for example “QUESTION_ANSWERS.md”):
-      + Copy the questions into the document
-      + Answer the question.
-    + Option 2: Answer the questions inline in the notebook:
-      + Edit the markdown cell with the question in it
-      + Create a header (example: `##### ✅ Answer:`) to help the grader find your answer
-      + Answer the question
-      + Sample: 
-      ![Inline Answer Sample](images/inline_answer_sample.png)
-3. Enhancing your RAG application (🏗️ Activity #1):
-    + "your RAG application" refers to the code cells of this notebook, as well as the `aimakerspace` library.
-    + At the end of the file is a Python code cell where you will enter the code to enhance the application
-    + If you so desire, you can also implement some of the code in new `.py` files and `import` the functionality into that final code cell.
-4. Commit and push all of your changes to your origin repository.
->(REMINDER: You should not merge the assignment branch into origin’s main branch. This will spare you from future challenges when you pull the new content for each session.)
+1. Pull the latest updates from upstream into the main branch of your AIE8 repo:
+    - _(You should have completed this process already):_ For your initial repo setup see [00_Setting Up Git/README.md](https://github.com/AI-Maker-Space/AIE8/tree/main/00_Setting%20Up%20Git)
+    - To get the latest updates from AI Makerspace into your own AIE8 repo, run the following commands:
+    ```
+    git checkout main
+    git pull upstream main
+    git push origin main
+    ```
+2. **IMPORTANT:** Start Cursor from the `02_Embeddings_and_RAG` folder (you can also use the _File -> Open Folder_ menu option of an existing Cursor window)
+3. Create a branch of your `AIE8` repo to track your changes. Example command: `git checkout -b s02-assignment`
+4. Answer Questions 1 - 4 using the `✅ Answer:` markdown cell below them.
+5. Complete Activity #1 _(Enhance your RAG application in some way!)_ at the end of the notebook:
+   + "your RAG application" refers to the code cells of this notebook, as well as the code in the `aimakerspace` library.
+   + At the end of the file is a Python code cell where you will enter the code to enhance the application
+   + If you so desire, you can also implement some of the code in new `.py` files and `import` the functionality into that final code cell.
+6. Add, commit and push your modified `Pythonic_RAG_Assignment.ipynb` to your origin repository.
 
-When submitting your homework, provide the GitHub link to the `02_Embeddings_and_RAG` folder _**of your assignment branch**_. To get the correct link:
-+ Go to the code page of your `AIE7` repo:
-+ Change the branch dropdown from `main` to the name of the branch you created in Step 1 above.
-+ Select the `02_Embeddings_and_RAG` folder
-+ Copy the current URL from your browser and paste it into your Homework submission form.
+>(NOTE: You should not merge this commit into origin's main branch. This will spare you from update challenges for each future session.)
+
+When submitting your homework, provide the GitHub URL to the tracking branch (for example: `s02-assignment`) you created on your AIE8 repo.
