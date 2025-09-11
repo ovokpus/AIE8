@@ -61,7 +61,7 @@ git remote -v
 
 You should see an output very similar to this (your origin will be a different address)
 
-```
+```bash
 origin  git@github.com:chris-alexiuk/AIE8.git (fetch)
 origin  git@github.com:chris-alexiuk/AIE8.git (push)
 upstream        git@github.com:AI-Maker-Space/AIE8.git (fetch)
@@ -87,7 +87,7 @@ But before we get to doing this - we'll first need to do our "first pull and pus
 
 This is a long command, but it basically just lets us "sync up" our `git log` between the two different remote repositories.
 
-It's easy enough in practice, we first need to `git pull` the content from the AIE1 remote repository hosted on GitHub.com to our local repository.
+It's easy enough in practice, we first need to `git pull` the content from the AIE8 remote repository hosted on GitHub.com to our local repository.
 
 ```bash
 git pull upstream main --allow-unrelated-histories
@@ -98,4 +98,3 @@ Then, we need to `git push` the new content to our empty remote repostory on Git
 ### Conclusion
 
 Now you're done!!!! :tada:
-
