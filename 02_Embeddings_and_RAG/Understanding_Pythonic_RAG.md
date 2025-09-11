@@ -507,6 +507,7 @@ flowchart TD
 ### Memory and Computational Footprint
 
 ```mermaid
+%%{init: {"pie": {"textPosition": 0.5}, "themeVariables": {"pieTextColor": "#000000"}}}%%
 pie title Storage Requirements (2.7MB Total)
     "Embeddings (2.3MB)" : 85
     "Original Text (300KB)" : 11
@@ -516,16 +517,16 @@ pie title Storage Requirements (2.7MB Total)
 ```mermaid
 gantt
     title Query Processing Timeline
-    dateFormat X
+    dateFormat YYYY-MM-DD
     axisFormat %L ms
     
     section API Calls
-    Embedding API Call : 0, 500
-    LLM API Call : 1000, 4000
+    Embedding API Call : task1, 2024-01-01, 500ms
+    LLM API Call : task2, after task1, 3000ms
     
-    section Local Processing
-    Similarity Computation : 500, 505
-    Context Assembly : 505, 510
+    section Local Processing  
+    Similarity Computation : task3, after task1, 5ms
+    Context Assembly : task4, after task3, 5ms
 ```
 
 ```mermaid
