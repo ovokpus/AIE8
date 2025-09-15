@@ -1,47 +1,57 @@
+import asyncio
+import os
+from typing import Iterable, List
+
 from dotenv import load_dotenv
 from openai import AsyncOpenAI, OpenAI
-import openai
-from typing import List
-import os
-import asyncio
 
 
 class EmbeddingModel:
+    """Helper for generating embeddings via the OpenAI API."""
+
     def __init__(self, embeddings_model_name: str = "text-embedding-3-small"):
         load_dotenv()
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
+        if self.openai_api_key is None:
+            raise ValueError(
+                "OPENAI_API_KEY environment variable is not set. "
+                "Please configure it with your OpenAI API key."
+            )
+
+        self.embeddings_model_name = embeddings_model_name
         self.async_client = AsyncOpenAI()
         self.client = OpenAI()
 
-        if self.openai_api_key is None:
-            raise ValueError(
-                "OPENAI_API_KEY environment variable is not set. Please set it to your OpenAI API key."
-            )
-        openai.api_key = self.openai_api_key
-        self.embeddings_model_name = embeddings_model_name
+    async def async_get_embeddings(self, list_of_text: Iterable[str]) -> List[List[float]]:
+        """Return embeddings for ``list_of_text`` using the async client."""
 
-    async def async_get_embeddings(self, list_of_text: List[str]) -> List[List[float]]:
         embedding_response = await self.async_client.embeddings.create(
-            input=list_of_text, model=self.embeddings_model_name
+            input=list(list_of_text), model=self.embeddings_model_name
         )
 
-        return [embeddings.embedding for embeddings in embedding_response.data]
+        return [item.embedding for item in embedding_response.data]
 
     async def async_get_embedding(self, text: str) -> List[float]:
+        """Return an embedding for a single text using the async client."""
+
         embedding = await self.async_client.embeddings.create(
             input=text, model=self.embeddings_model_name
         )
 
         return embedding.data[0].embedding
 
-    def get_embeddings(self, list_of_text: List[str]) -> List[List[float]]:
+    def get_embeddings(self, list_of_text: Iterable[str]) -> List[List[float]]:
+        """Return embeddings for ``list_of_text`` using the sync client."""
+
         embedding_response = self.client.embeddings.create(
-            input=list_of_text, model=self.embeddings_model_name
+            input=list(list_of_text), model=self.embeddings_model_name
         )
 
-        return [embeddings.embedding for embeddings in embedding_response.data]
+        return [item.embedding for item in embedding_response.data]
 
     def get_embedding(self, text: str) -> List[float]:
+        """Return an embedding for a single text using the sync client."""
+
         embedding = self.client.embeddings.create(
             input=text, model=self.embeddings_model_name
         )

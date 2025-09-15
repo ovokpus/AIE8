@@ -1,57 +1,39 @@
 import re
+from typing import Any, Dict, List
 
 
 class BasePrompt:
-    def __init__(self, prompt):
-        """
-        Initializes the BasePrompt object with a prompt template.
+    """Simple string template helper used to format prompt text."""
 
-        :param prompt: A string that can contain placeholders within curly braces
-        """
+    def __init__(self, prompt: str):
         self.prompt = prompt
         self._pattern = re.compile(r"\{([^}]+)\}")
 
-    def format_prompt(self, **kwargs):
-        """
-        Formats the prompt string using the keyword arguments provided.
+    def format_prompt(self, **kwargs: Any) -> str:
+        """Return the prompt with ``kwargs`` substituted for placeholders."""
 
-        :param kwargs: The values to substitute into the prompt string
-        :return: The formatted prompt string
-        """
         matches = self._pattern.findall(self.prompt)
-        return self.prompt.format(**{match: kwargs.get(match, "") for match in matches})
+        replacements = {match: kwargs.get(match, "") for match in matches}
+        return self.prompt.format(**replacements)
 
-    def get_input_variables(self):
-        """
-        Gets the list of input variable names from the prompt string.
+    def get_input_variables(self) -> List[str]:
+        """Return the placeholder names used by this prompt."""
 
-        :return: List of input variable names
-        """
         return self._pattern.findall(self.prompt)
 
 
 class RolePrompt(BasePrompt):
-    def __init__(self, prompt, role: str):
-        """
-        Initializes the RolePrompt object with a prompt template and a role.
+    """Prompt template that also captures an accompanying chat role."""
 
-        :param prompt: A string that can contain placeholders within curly braces
-        :param role: The role for the message ('system', 'user', or 'assistant')
-        """
+    def __init__(self, prompt: str, role: str):
         super().__init__(prompt)
         self.role = role
 
-    def create_message(self, format=True, **kwargs):
-        """
-        Creates a message dictionary with a role and a formatted message.
+    def create_message(self, apply_format: bool = True, **kwargs: Any) -> Dict[str, str]:
+        """Build an OpenAI chat message dictionary for this prompt."""
 
-        :param kwargs: The values to substitute into the prompt string
-        :return: Dictionary containing the role and the formatted message
-        """
-        if format:
-            return {"role": self.role, "content": self.format_prompt(**kwargs)}
-        
-        return {"role": self.role, "content": self.prompt}
+        content = self.format_prompt(**kwargs) if apply_format else self.prompt
+        return {"role": self.role, "content": content}
 
 
 class SystemRolePrompt(RolePrompt):
