@@ -9,7 +9,6 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Session 3: Pre-Work](https://www.notion.so/Session-3-End-to-End-RAG-Deployment-and-2025-Industry-Use-Cases-21dcd547af3d80d99c31e72c6d8921d6?source=copy_link#222cd547af3d8051ab26f94689f4d23d)| [Session 3: End-to-End RAG Deployment and 2025 Industry Use Cases](https://www.notion.so/Session-3-End-to-End-RAG-Deployment-and-2025-Industry-Use-Cases-21dcd547af3d80d99c31e72c6d8921d6) | [Recording!](https://us02web.zoom.us/rec/share/-HSWHF1qzuoUNE7db5ycFgRu9lvdYIsdjUeiR5U9tL2aGQxW15MF27ZpvOdJah67.mEpaMBDBgmIK4iGu)  (Zit?$p$1) | [Session 3 Slides](https://www.canva.com/design/DAGrSmtPHuA/trCoeGkNeLWJO-bepQTxKA/view?utm_content=DAGrSmtPHuA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0aea42a9e0) | You are here! | [Session 3 Assignment: End to end RAG](https://forms.gle/hXFVJjGTEFFmCsAB9) | [AIE7 Feedback 7/1](https://forms.gle/Vpx5C2EEA7eK9PRH6)
 
 
 Building off last week, we're going to take our Pythonic RAG application to the next level!
@@ -48,6 +47,8 @@ After you are done - provide instructions in a "MERGE.md" file that explains how
 Modify the application (frontend and backend) to: 
 
 - Allow the user to upload a PDF
+  - Your PDF should be used to build your RAG's context
+  - The LLM should only answer questions using information from the provided context
 - Index the PDF using the `aimakerspace` library
 - Chat with the PDF using a simple RAG system built with the `aimakerspace` library
 ```
@@ -68,6 +69,17 @@ This may involve:
 - Adding additional file-types to be ingested by RAG
 
 Once done, deploy your customized application to Vercel!
+
+### 🚧 Advanced Build:
+
+<details>
+<summary>🚧 Advanced Build 🚧 (OPTIONAL - <i>open this section for the requirements</i>)</summary>
+
+Leverage Together API's endpoints to power the LLM in your deployed application - this will require a small change to the `aimakerspace/openai_utils/chatmodel.py` file. 
+
+> NOTE: Also describe the process of modifying the endpoints used - and what makes 
+
+</details>
 
 ## Submitting Your Homework
 
