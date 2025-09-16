@@ -9,7 +9,7 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-
+| [Session 3: E2E & Use Cases](https://www.notion.so/Session-3-End-to-End-AI-Applications-OSS-Models-I-and-2025-Industry-Use-Cases-26acd547af3d80b4b646e2fd6f1fd31c) | Coming soon! | Coming soon! | You are here! | Coming soon! | Coming soon! | Coming soon!
 
 Building off last week, we're going to take our Pythonic RAG application to the next level!
 
