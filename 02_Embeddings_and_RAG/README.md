@@ -56,7 +56,7 @@ Here's a template to get your post started!
 ```
 🚀 Exciting News! 🎉
 
-I just built and shipped my very first Retrieval Augmented Generation QA Application using Chainlit and the OpenAI API! 🤖💼 
+I just built and shipped my very first Retrieval Augmented Generation QA Application using FastAPI, React and the OpenAI API! 🤖💼 
 
 🔍 Three Key Takeaways:
 1️⃣ The power of combining traditional search methods with state-of-the-art generative models is mind-blowing. 🧠✨
