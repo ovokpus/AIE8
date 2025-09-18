@@ -36,11 +36,10 @@ Run the preparation notebook and complete the contained tasks:
 Next, run the Assignment notebook and complete the contained tasks:
 
 - 🤝 Breakout Room #2:
-    1. Install LangGraph
-    2. Understanding States and Nodes
-    3. Building a Basic Graph
-    4. Implementing a Simple RAG Graph
-    5. Extending the Graph with Complex Flows
+    1. (Optional) Setup LangSmith tracing
+    2. Understanding LangGraph States and Nodes
+    3. Implementing a Simple RAG Graph
+    4. Start to think about extending the Graph with Complex Flows
 
 # Ship 🚢
 
