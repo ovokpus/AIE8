@@ -5,9 +5,9 @@
 
 ## <h1 align="center" id="heading">Production RAG with LangGraph and LangChain</h1>
 
-| 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
-|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-
+| 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
+|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| [Session 4: RAG with LangGraph, OSS Local Models, & Eval w/ LangSmith ](https://www.notion.so/Session-4-Production-Grade-RAG-with-LangChain-and-LangSmith-26acd547af3d80838d5beba464d7e701) | Coming soon! | Coming soon! | You are here! | Coming soon! | Coming soon! | Coming soon!
 
 # Build 🏗️
 
@@ -26,24 +26,20 @@ Before starting the main assignment, run the `Ollama_Setup_and_Testing.ipynb` no
 - Test model inference with LangChain connectors
 - Ensure all models are properly downloaded
 
-Run the main notebook and complete the contained tasks:
+Run the preparation notebook and complete the contained tasks:
 
 - 🤝 Breakout Room #1:
-    1. Install LangGraph
-    2. Understanding States and Nodes
-    3. Building a Basic Graph
-    4. Implementing a Simple RAG Graph
-    5. Extending the Graph with Complex Flows
+    1. Install and run Ollama
+    2. Ensure all the required models are pulled
+    3. Test them!
 
-Next, run the LangSmith and Evaluation notebook and complete the contained tasks:
+Next, run the Assignment notebook and complete the contained tasks:
 
 - 🤝 Breakout Room #2:
-    1. Dependencies and OpenAI API Key
-    2. LangGraph RAG
-    3. Setting Up LangSmith
-    4. Examining the Trace in LangSmith!
-    5. Create Testing Dataset
-    6. Evaluation
+    1. (Optional) Setup LangSmith tracing
+    2. Understanding LangGraph States and Nodes
+    3. Implementing a Simple RAG Graph
+    4. Start to think about extending the Graph with Complex Flows
 
 # Ship 🚢
 
