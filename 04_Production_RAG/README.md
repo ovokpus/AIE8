@@ -5,9 +5,9 @@
 
 ## <h1 align="center" id="heading">Production RAG with LangGraph and LangChain</h1>
 
-| 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
-|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-
+| 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
+|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| [Session 4: RAG with LangGraph, OSS Local Models, & Eval w/ LangSmith ](https://www.notion.so/Session-4-Production-Grade-RAG-with-LangChain-and-LangSmith-26acd547af3d80838d5beba464d7e701) | Coming soon! | Coming soon! | You are here! | Coming soon! | Coming soon! | Coming soon!
 
 # Build 🏗️
 
