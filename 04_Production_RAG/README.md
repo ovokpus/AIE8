@@ -36,11 +36,10 @@ Run the preparation notebook and complete the contained tasks:
 Next, run the Assignment notebook and complete the contained tasks:
 
 - 🤝 Breakout Room #2:
-    1. Install LangGraph
+    1. LangChain and LCEL Concepts
     2. Understanding States and Nodes
-    3. Building a Basic Graph
-    4. Implementing a Simple RAG Graph
-    5. Extending the Graph with Complex Flows
+    3. Introduction to QDrant Vector Databases
+    4. Building a Basic Graph
 
 # Ship 🚢
 
@@ -57,15 +56,7 @@ Next, run the Assignment notebook and complete the contained tasks:
 
 Follow these steps to prepare and submit your homework:
 1. Create a branch of your `AIE7` repo to track your changes. Example command: `git checkout -b s04-assignment`
-2. Responding to the activities and questions in both the `Assignment_Introduction_to_LCEL_and_LangGraph_LangChain_Powered_RAG.ipynb`and `LangSmith_and_Evaluation` notebooks:
-    + Option 1: Provide your responses in a separate markdown document:
-      + Create a markdown document in the `04_Production_RAG` folder of your assignment branch (for example “ACTIVITIES_QUESTIONS.md”):
-      + Copy the activities and questions into the document
-      + Provide your responses to these activities and questions
-    + Option 2: Respond to the activities and questions inline in the notebooks:
-      + Edit the markdown cells of the activities and questions then enter your responses
-      + NOTE: Remember to create a header (example: `##### ✅ Answer:`) to help the grader find your responses
-3. Add (if you created a separate document), commit, and push your responses to your `origin` repository.
+2. Responding to the activities and questions inline in the `Assignment_Introduction_to_LCEL_and_LangGraph_LangChain_Powered_RAG.ipynb`
 
 > _NOTE on the `Assignment_Introduction_to_LCEL_and_LangGraph_LangChain_Powered_RAG` notebook: You will also need to enter your response to Question #1 in the code cell directly below it which contains this line of code:_
     ```
