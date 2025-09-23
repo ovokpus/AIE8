@@ -31,9 +31,14 @@ In today's assignment, we'll be creating an Agentic LangChain RAG Application.
 
 ### Advanced Build
 
+<details>
+<summary>🚧 Advanced Build 🚧 (OPTIONAL - <i>open this section for the requirements</i>)</summary>
+
 You are tasked to create an agent with 3 tools that can research a specific domain of your choice.
 
 You must deploy the resultant agent with a React (or Custom) frontend.
+
+</details>
 
 ## Ship 🚢
 
@@ -76,7 +81,7 @@ Feel free to reach out if you're curious or would like to collaborate on similar
 ### Main Homework Assignment
 
 Follow these steps to prepare and submit your homework assignment:
-1. Create a branch of your `AIE7` repo to track your changes. Example command: `git checkout -b s05-assignment`
+1. Create a branch of your `AIE8` repo to track your changes. Example command: `git checkout -b s05-assignment`
 2. Respond to the activities and questions in the `Introduction_to_LangGraph_for_Agents_Assignment_Version.ipynb` notebook:
     + Edit the markdown cells of the activities and questions then enter your responses
     + NOTE: Remember to create a header (example: `##### ✅ Answer:`) to help the grader find your responses
@@ -84,10 +89,13 @@ Follow these steps to prepare and submit your homework assignment:
 4. Make sure to include all of the following on your Homework Submission Form:
     + The GitHub URL to the completed notebook _on your assignment branch (not main)_
     + The URL to your Loom Video
-    + Your Three lessons learned/not yet learned
+    + Your Three Lessons Learned/Not Yet Learned
     + The URLs to any social media posts (LinkedIn, X, Discord, etc.) ⬅️ _easy Extra Credit points!_
 
-### Advanced Build
-In addition to the above, include on your homework submission form the URLs to your Advanced Build's:
-+ GitHub Repo
-+ Production Deployment
+### Advanced Build 
+>_(To be done in place of the Main Assignment)_
+
+1. Complete the requirements, including deployment of the application.
+2. Complete the Homework Submission form providing the URLs to your Advanced Build's:
+    + GitHub Repo
+    + Production Deployment
