@@ -22,11 +22,12 @@ In today's assignment, we'll be creating an Agentic LangChain RAG Application.
   
 - 🤝 Breakout Room #2:
   - Part 1: LangSmith Evaluator:
-    1. Creating an Evaluation Dataset
-    2. Adding Evaluators
-  - Part 2:
-    3. Adding Helpfulness Check and "Loop" Limits
-    4. LangGraph for the "Patterns" of GenAI
+    - Task 1. Creating an Evaluation Dataset
+    - Task 2. Adding Evaluators
+  - Part 2: LangGraph with Helpfulness:
+    - Task 3. Adding Helpfulness Check and "Loop" Limits
+  - Part 3: LangGraph for the "Patterns" of GenAI
+    - Task 4: Helpfulness Check of Gen AI Pattern Descriptions
 
 ### Advanced Build
 
